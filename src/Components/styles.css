@@ -1,0 +1,589 @@
+/*
+
+***********************************************************
+universal reset seleciton for margin/padding/box-sizing
+AAAAAND
+font reset under body tag
+*/
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400px;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #777;
+  display: block;
+}
+
+/*Start Styling!*/
+/**************Wrapper and Container*******/
+
+.wrapper {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  height: 90vh;
+  overflow: hidden;
+}
+
+/**************HEADER!!!!******************/
+.Header {
+  width: 100%;
+  height: 10vh;
+  border: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+}
+
+.Header_Title {
+  left: 0;
+  font-size: 2.5vh;
+  margin-top: 0.3vh;
+}
+
+.Header_Links {
+  right: 0;
+  width: 50%;
+  font-size: 2.5vh;
+  padding-right: 10px;
+  padding-top: 3vh;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.Header h1 {
+  padding-left: 10px;
+}
+
+/****************SIDEBAR!!!!*******************/
+
+.Sidebar {
+  left: 0;
+  height: 90vh;
+  width: 350px;
+  border: 1px solid black;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: repeat(15, 1fr);
+  position: relative;
+  z-index: 1;
+  transition: all 0.25s;
+  text-align: center;
+  background-color: white;
+}
+
+.collapsed {
+  width: 32px;
+  transition: all 0.5s;
+}
+
+.Icon {
+  position: absolute;
+  margin-top: 3px;
+  margin-left: 7px;
+  left: 0;
+  top: 0;
+  cursor: pointer;
+}
+
+/***********************************************/
+/****************SIDBAR CONTENTS****************/
+/***********************************************/
+
+/****************Canvas Controls****************/
+
+.sidebarhidden {
+  visibility: hidden;
+}
+
+.controls {
+  border-bottom: 1px solid black;
+  grid-column: 1 / span 1;
+  grid-row: 1 / span 4;
+  display: grid;
+
+  text-align: left;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  font-size: small;
+}
+
+.FormLabel {
+  font-size: 0.8;
+  grid-column: 2 / span 3;
+  grid-row: 1 / span 1;
+  padding-left: 5px;
+}
+
+#input1 {
+  grid-column: 2 / span 1;
+  grid-row: 2 / span 1;
+  width: 6em;
+  text-align: center;
+}
+
+#label_inp1 {
+  grid-column: 1 / span 1;
+  grid-row: 2 / span 1;
+  padding-left: 5px;
+}
+
+#input2 {
+  grid-column: 4 / span 1;
+  grid-row: 2 / span 1;
+  width: 6em;
+  text-align: center;
+}
+
+#label_inp2 {
+  grid-column: 3 / span 1;
+  grid-row: 2 / span 1;
+  padding-left: 5px;
+}
+
+#label_inp3 {
+  grid-column: 1 / span 1;
+  grid-row: 3 / span 1;
+  padding-left: 5px;
+}
+
+#input3 {
+  grid-column: 2 / span 3;
+  grid-row: 3 / span 1;
+}
+
+.chkboxs {
+  grid-column: 1 / span 5;
+  grid-row: 4 / span 1;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+/****************TileSet Select Controls****************/
+
+.selectTset {
+  border-bottom: 1px solid black;
+  grid-column: 1 / span 1;
+  grid-row: 5 / span 4;
+  text-align: left;
+  padding-left: 20px;
+  overflow: auto;
+}
+
+.selectTsetTitle {
+  height: 20px;
+  border-bottom: 1px solid grey;
+  font-size: smaller;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+}
+
+.Layertitle {
+  text-align: center;
+}
+
+.iconDiv {
+  /* position: absolute;
+
+  right: 0; */
+  cursor: pointer;
+  display: flex;
+  justify-content: space-evenly;
+  width: 60px;
+}
+
+.selectMenu {
+  overflow: auto;
+  text-align: left;
+  font-size: smaller;
+}
+
+/* Remove default bullets */
+ul,
+#myUL {
+  list-style-type: none;
+}
+
+/* Remove margins and padding from the parent ul */
+#myUL {
+  margin: 0;
+  padding: 0;
+}
+
+/* Style the caret/arrow */
+.caret {
+  cursor: pointer;
+  user-select: none; /* Prevent text selection */
+}
+
+/* Create the caret/arrow with a unicode, and style it */
+.caret::before {
+  content: "\25B6";
+  color: black;
+  display: inline-block;
+  margin-right: 6px;
+}
+
+/* Rotate the caret/arrow icon when clicked on (using JavaScript) */
+.caret-down::before {
+  transform: rotate(90deg);
+}
+
+/* Hide the nested list */
+.nested {
+  display: none;
+}
+
+/* Show the nested list when the user clicks on the caret/arrow (with JavaScript) */
+.active {
+  display: block;
+}
+
+/****************Tile Selection Select Controls****************/
+
+.selectTile {
+  grid-column: 1 / span 1;
+  grid-row: 9 / span 6;
+  font-size: smaller;
+  /*overflow: auto;*/
+}
+
+#cnvTileset {
+  margin-top: 10px;
+  /*height: 240px;
+  width: 240px;
+*/
+  padding: 0;
+}
+
+.selectedTilePreview {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.labelSelTile {
+  position: absolute;
+  right: 32px;
+  bottom: 0;
+  padding-right: 5px;
+  font-size: small;
+  font-style: bold;
+}
+
+.rotateSelTitle {
+  bottom: 40px;
+  right: 0;
+  writing-mode: vertical-lr;
+  text-orientation: mixed;
+  transition: all 0.5s;
+}
+
+/***********************************************/
+/****************Canvas CONTENTS****************/
+/***********************************************/
+
+/****************Canvas****************/
+
+.CanvasDiv {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 90vh;
+  width: calc(100vw - (100vw - 100%));
+
+  z-index: 0;
+}
+
+/***********************************************/
+/****************Preview Card CONTENTS****************/
+/***********************************************/
+
+/****************Card****************/
+
+.card {
+  /* Add shadows to create the "card" effect */
+  width: 20%;
+  height: 30%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  background-color: white;
+  transition: 0.3s;
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  margin-right: 30px;
+  margin-bottom: 30px;
+  text-align: left;
+  font-size: smaller;
+}
+
+.card-hid {
+  height: 20px;
+  width: 20px;
+}
+
+.Iconhid {
+  position: absolute;
+  margin-top: 4px;
+  margin-right: 4px;
+  right: 0;
+  top: 0;
+}
+
+.card-controls {
+  height: 20px;
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.prvCanvDivhidden {
+  display: none;
+}
+
+.PreviewIcon {
+  position: absolute;
+  margin-top: 3px;
+  margin-left: 7px;
+  right: 5px;
+  top: 0;
+  cursor: pointer;
+}
+
+.prevImage {
+  width: 100%;
+  height: 100%;
+}
+
+/***********************************************/
+/****************Icon Animations****************/
+/***********************************************/
+
+/* Icon Bob */
+
+.HoverIcon :hover::before {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px #ae5cf1;
+}
+
+.HoverIcon:hover {
+  color: #ae5cf1;
+  box-shadow: 0 0 5px #ae5cf1;
+  text-shadow: 0 0 5px #ae5cf1;
+}
+
+/***********************************************/
+/****************Tooltip styling****************/
+/***********************************************/
+/* Tooltip container */
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 150%;
+  left: 50%;
+  margin-left: -60px;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: black transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+.custom-tooltip {
+  padding: 8px 10px !important;
+}
+
+/***********************************************/
+/****************Modal styling****************/
+/***********************************************/
+/* Modal container */
+
+.modal_background {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9;
+}
+
+.modal-body {
+  width: 900px;
+  height: 500px;
+  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
+  background: #fff;
+  color: #000;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 35px auto;
+  position: relative;
+  z-index: 10;
+  border-radius: 10px;
+}
+
+.modal_header {
+  grid-column: 1 / span 2;
+  grid-row: 1 / 1;
+  font-weight: bolder;
+  font-size: x-large;
+  border-bottom: 1px black solid;
+}
+
+.modal-image {
+  margin-top: 10px;
+  margin-left: 10px;
+  border-radius: 10px 10px 10px 10px;
+  background: #000;
+  grid-column: 1 / span 1;
+  grid-row: 2 / span 1;
+}
+
+.modal-content {
+  display: flex;
+  font-size: 50px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  line-height: 1.8;
+  color: #141414;
+  grid-column: 2 / span 1;
+  grid-row: 2 / span 1;
+}
+
+.modal-input {
+  width: 400px;
+  font-size: 20px;
+  display: block;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.modal-button {
+  width: 200px;
+  border-radius: 100px;
+  font-size: 20px;
+  text-align: center;
+  text-decoration: none;
+
+  margin: 2px 0;
+  border: solid 1px transparent;
+  border-radius: 4px;
+  padding: 0.5em 1em;
+
+  color: #ffffff;
+  background-color: #9555af;
+}
+
+/***********************************************/
+/***********Loading overlay styling*************/
+/***********************************************/
+
+.loader,
+.loader:before,
+.loader:after {
+  border-radius: 50%;
+  width: 2.5em;
+  height: 2.5em;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation: load7 1.8s infinite ease-in-out;
+  animation: load7 1.8s infinite ease-in-out;
+}
+.loader {
+  color: #c2b3b3;
+  font-size: 10px;
+  margin: 80px auto;
+  position: relative;
+  text-indent: -9999em;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+.loader:before,
+.loader:after {
+  content: "";
+  position: absolute;
+  top: 0;
+}
+.loader:before {
+  left: -3.5em;
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+.loader:after {
+  left: 3.5em;
+}
+@-webkit-keyframes load7 {
+  0%,
+  80%,
+  100% {
+    box-shadow: 0 2.5em 0 -1.3em;
+  }
+  40% {
+    box-shadow: 0 2.5em 0 0;
+  }
+}
+@keyframes load7 {
+  0%,
+  80%,
+  100% {
+    box-shadow: 0 2.5em 0 -1.3em;
+  }
+  40% {
+    box-shadow: 0 2.5em 0 0;
+  }
+}
+
+/***********************************************/
+/********************Canvas*********************/
+/***********************************************/
+.cnv {
+  border: 1px black solid;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+
+  /*transform: translate(-50%, -50%);*/
+}
